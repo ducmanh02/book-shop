@@ -1,0 +1,64 @@
+{% extends 'baseCart.html' %}
+
+
+
+{% block content %}
+    <div class='cart-view'>
+        <div class='book-list-title'>
+            <h1>Giỏ hàng</h1>
+        </div>
+        {% if cart_items %}
+            <div class='cart-list-table'>
+                <table id='book-list-table' >
+                    <thead>
+                        <tr>
+                            <th>Tên sách</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Tổng cộng</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                            <tr>
+                                <td>{{ item.book.name }}</td>
+                                <td>
+                                    <form id='change-quantity-input' method="post" action="{% url 'cart:update_quantity' item.pk %}">
+                                        {% csrf_token %}
+                                        <input   type="number" name="quantity" value="{{ item.quantity }}" min="1" max="10">
+                                        <button class ='handle-book-btn' type="submit">Cập nhật</button>
+                                    </form>
+                                </td> 
+                                <td>{{ item.book.price }}</td>
+                                <td>{{ item.get_item_price }}</td> 
+                                <td> 
+                                    <form method="post" action="{% url 'cart:remove_from_cart' item.pk %}">
+                                        {% csrf_token %}
+                                        <button class ='handle-book-btn' type="submit">Xóa</button>
+                                    </form>
+                                </td> 
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Tổng cộng:</td>
+                            <td>{{ total_price }}</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <div id='check-out'>
+                <button style="width:200px" class ='handle-book-btn '>
+                    <a href="{% url 'orders:create_order' %}" > Đặt Hàng </a>
+                  </button>
+            </div>
+        {% else %}
+            <p>Giỏ hàng của bạn đang trống.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+

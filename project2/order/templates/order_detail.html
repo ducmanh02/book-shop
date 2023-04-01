@@ -1,0 +1,38 @@
+{% extends 'baseOrder.html' %}
+
+
+{% block content %}
+  <div class='main-user-login'>
+    <h1>Order Detail - {{ order.order_id }}</h1>
+    <p>Name: {{ order.name }}</p>
+    <p>Address: {{ order.address }}</p>
+    <p>Phone: {{ order.phone }}</p>
+    <p>Status: {{ order.get_status_display }}</p>
+    <h1>Order Detail</h1>
+    <p>Order ID: {{ order.order_id }}</p>
+    <p>Total: {{ order.total }}</p>
+    
+    <ul>
+      {% for item in cart_items %}
+        <li>{{ item.name }} - {{ item.quantity }}</li>
+      {% endfor %}
+    </ul>
+    {% if request.user.is_superuser %}
+    <form method="post">
+      {% csrf_token %}
+      <label for="status">Status:</label>
+      <select id="status" name="status">
+        <option value="0"{% if order.status == '0' %} selected{% endif %}>Uncompleted</option>
+        <option value="1"{% if order.status == '1' %} selected{% endif %}>Completed</option>
+      </select>
+      <button class ='handle-book-btn' type="submit">Save</button>
+      
+      
+        
+                <button class ='handle-book-btn'>
+                  <a href="/order/list">Orders List</a> 
+                </button>
+    </form>
+  </div>
+  {% endif %}
+{% endblock %}

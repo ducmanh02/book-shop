@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <!--<![endif]-->
+  <html>
+    <head>
+      {% load static %}
+      <meta charset="UTF-8" />
+      <script
+        src="https://kit.fontawesome.com/f4980961c3.js"
+        crossorigin="anonymous"
+      ></script>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        rel="icon"
+        type="image/x-icon"
+        href='{% static "home/favicon.ico" %}'
+      />
+      <link rel="stylesheet" href='{% static "home/style.css" %}' />
+
+      <title>BOOK SHOP</title>
+    </head>
+    <style type="text/css">
+      .main-user {
+        padding: 80px;
+      }
+      .main-user-login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        text-align: start;
+        gap: 30px;
+      }
+      #login-form p {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        gap: 10px;
+      }
+      #login-form input[type="text"],input[type="password"],input[type="email"],select {
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        outline: #30333a;
+        width: 300px;
+        height: 35px;
+        margin-bottom: 20px;
+      }
+      #login-form textarea {
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        outline: #30333a;
+        width: 300px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+      #login-form button{
+        width:200px;
+        margin-left: 50px;
+      }
+    </style>
+    <body>
+      <div class="header">
+        <div class="header-logo">LOGO</div>
+
+        <div class="header-menu">
+          <div class="header-menu-item actived">
+            <a href="/">Home</a>
+          </div>
+          <div class="header-menu-item">
+            <a id="actived" href="/book">Books</a>
+          </div>
+          <div class="header-menu-item">
+            <a href="#">About</a>
+          </div>
+          <div class="header-menu-item">
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div class="header-icon">
+          <div class="header-icon-user">
+            <button onCLick="displayLogin()">
+              <i class="fa-solid fa-user"></i>
+            </button>
+
+            <div id="header-icon-user-display">
+              {% if user.is_authenticated %}
+              <div class="header-btn-logout">
+                <a href="{% url 'User:logout'%}"> Logout</a>
+              </div>
+              {% else %}
+              <div class="header-btn-login">
+                <a href="/user/login"> Login</a>
+              </div>
+              <div class="header-btn-register">
+                <a href="/user/register">Register </a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="header-icon-cart">
+            <a href="/cart/view"><i class="fa-solid fa-cart-shopping"></i></a>
+          </div>
+        </div>
+      </div>
+      <!--[if lt IE 7]>
+        <p class="browsehappy">
+          You are using an <strong>outdated</strong> browser. Please
+          <a href="#">upgrade your browser</a> to improve your experience.
+        </p>
+      <![endif]-->
+
+      <div class="main">
+        <div class="main-user">{% block content %} {% endblock %}</div>
+      </div>
+
+      <script>
+        function displayLogin() {
+          console.log("displayLogin");
+          let displayUser = document.getElementById("header-icon-user-display");
+          if (displayUser.style.display === "none") {
+            displayUser.style.display = "block";
+          } else {
+            displayUser.style.display = "none";
+          }
+        }
+      </script>
+    </body>
+  </html>
+</html>
