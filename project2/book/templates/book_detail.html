@@ -1,29 +1,42 @@
 {% extends 'baseBook.html' %} {% block content %}
 <div class="book-details">
-  <div class="book-details-title">
-    <h1>{{ book.name }}</h1>
+
+
+  <div class="container-book_detail">
+    <div class="image-book_detail">
+        <img src="{{ book.image.url}}" alt="">
+    </div>
+    <div class="script-book_detail">
+        <div class="script-book_detail-name">
+            <h1 class="touppercase">{{ book.name }}</h1>
+            
+        </div>
+        <div class="script-book_detail-author">
+          <p >Author : {{ book.author }}</p>
+          <p>Category: <a href="">{{ book.category_id.name }}</a></p>
+          <p>File: {{ book.file }}</p>
+          <p>Description: {{ book.description }}</p>
+        </div>
+        <div class="script-book_detail-price"><p>Price: {{ book.price }}đ</p></div>
+        <div class="script-book_detail-paragraph">
+            <p>Dang cap nhat thong tin san pham</p>
+            <p>Biet them thong tin lien he HOTLINE: 0123456789</p>
+        </div>
+        <div class="book-btn ">
+            <button class ='handle-book-btn create-book-btn'><a href="{% url 'cart:add_to_cart' book.pk %}">ADD TO CART</a></button>
+        </div>
+        <div>
+          {% if request.user.is_superuser %}
+          <button class ='handle-book-btn'>
+            <a href="{% url 'book:book_edit' book.pk %}">Edit</a> 
+          </button>
+          <button class ='handle-book-btn'>
+            <a href="{% url 'book:book_delete' book.pk %}">Delete</a>
+          </button>
+          {% endif %}
+        </div> 
+    </div>
   </div>
-  <div class="book-details-script">
-    <p>Description: {{ book.description }}</p>
-    <p>Price: {{ book.price }}</p>
-    <p>Category: {{ book.category_id.name }}</p>
-    <p>File: {{ book.file }}</p>
-  </div>
-  <div class='book-details-image'>
-    <p>Image: 
-      
-    </p>
-    <img class="book-item-image" src="{{ book.image.url}}" />
-  </div>
-  <div>
-    {% if request.user.is_superuser %}
-    <button class ='handle-book-btn'>
-      <a href="{% url 'book:book_edit' book.pk %}">Edit</a> 
-    </button>
-    <button class ='handle-book-btn'>
-      <a href="{% url 'book:book_delete' book.pk %}">Delete</a>
-    </button>
-    {% endif %}
-  </div>
+  
 </div>
 {% endblock %}

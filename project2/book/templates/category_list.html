@@ -25,7 +25,7 @@
               </td> 
               {% if request.user.is_superuser %}
                  <td>
-                  <button class ='handle-book-btn'>
+                  <button class ='handle-book-btn '>
                     <a href="{% url 'book:category_delete' category.category_id  %}">Delete</a>  
                   </button>
                    
@@ -35,8 +35,8 @@
           {% endfor %}
         </tbody>
         {% if request.user.is_superuser %}
-        <button class ='handle-book-btn'>
-          <a href="{% url 'book:category_create' %}">Create</a>   
+        <button class ='handle-book-btn create-book-btn'>
+          <a href="{% url 'book:category_create' %}">Create New Category</a>   
         </button>
           
         {% endif %}

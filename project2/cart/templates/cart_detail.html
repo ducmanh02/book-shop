@@ -16,7 +16,7 @@
                             <th>Số lượng</th>
                             <th>Giá</th>
                             <th>Tổng cộng</th>
-                            <th></th>
+                            <th>Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,7 +27,7 @@
                                     <form id='change-quantity-input' method="post" action="{% url 'cart:update_quantity' item.pk %}">
                                         {% csrf_token %}
                                         <input   type="number" name="quantity" value="{{ item.quantity }}" min="1" max="10">
-                                        <button class ='handle-book-btn' type="submit">UPDATE</button>
+                                        <button class ='handle-book-btn' type="submit">Cập nhật</button>
                                     </form>
                                 </td> 
                                 <td>{{ item.book.price }}</td>
@@ -35,7 +35,7 @@
                                 <td> 
                                     <form method="post" action="{% url 'cart:remove_from_cart' item.pk %}">
                                         {% csrf_token %}
-                                        <button class ='handle-book-btn' type="submit">DELETE</button>
+                                        <button class ='handle-book-btn' type="submit">Xóa</button>
                                     </form>
                                 </td> 
                             </tr>
@@ -53,7 +53,7 @@
             
             <div id='check-out'>
                 <button style="width:200px" class ='handle-book-btn '>
-                    <a href="{% url 'orders:create_order' %}" > CHECK OUT</a>
+                    <a href="{% url 'orders:create_order' %}" > Đặt Hàng </a>
                   </button>
             </div>
         {% else %}

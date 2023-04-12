@@ -1,0 +1,146 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+.book-image{
+    height: 300px;
+}
+.book-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-details{
+    text-align: center;
+
+}
+.book-details a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+
+
+.handle-book-btn a{
+    color: white;
+    text-decoration: none;
+
+}
+
+.handle-book-btn{
+    padding: 5px 10px;
+    background-color:#946659;
+    color :white;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.create-book-btn{
+    width: 200px;
+    margin-top: 20px;
+}
+
+
+/* book details */
+.container-book_detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 100px;
+}
+.image-book_detail{
+    flex :1;
+}
+.image-book_detail img{
+    width: 300px;
+    transition: transform .5s, filter 1.5s ease-in-out;
+    
+}
+.image-book_detail img:hover{
+    
+    transform: scale(1.1);
+}
+
+.script-book_detail{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+}
+.script-book_detail-author{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    
+}
+.script-book_detail-price p{
+    font-weight: 700;
+    font-size: 18px;
+}
+.script-book_detail-paragraph{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+.touppercase {
+    text-transform: uppercase;
+}
+/* create book */
+.margin-bottom-20{
+    margin-bottom: 20px;
+    display: flex;
+    gap: 25px;
+}
+.category-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  #create-form p {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    gap: 10px;
+  }
+  #create-form input[type="text"],select {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    outline: #30333a;
+    width: 300px;
+    height: 35px;
+    margin-bottom: 20px;
+  }
+  #create-form textarea {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    outline: #30333a;
+    width: 300px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  #create-form button{
+    width:200px;
+    margin-left: 50px;
+  }
