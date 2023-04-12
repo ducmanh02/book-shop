@@ -1,3 +1,6 @@
+.book-list-title{
+    margin-bottom: 30px;
+}
 .wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -105,9 +108,13 @@
 }
 /* create book */
 .margin-bottom-20{
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    
     display: flex;
     gap: 25px;
+}
+.margin-bottom-20 button{
+    margin-top: 0px;
 }
 .category-create {
     display: flex;

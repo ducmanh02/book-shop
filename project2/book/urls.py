@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 app_name = 'book'
 urlpatterns = [
     path('category/',views.get_category,name = 'category'),
@@ -15,7 +17,7 @@ urlpatterns = [
     path('book/<int:pk>/delete/', views.book_delete, name='book_delete'),
     path('search/', views.book_search, name='book_search'),
     # path('bookview/<int:pk>',views.view_document,name = 'view_document'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
     
 

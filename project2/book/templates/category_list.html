@@ -5,13 +5,24 @@
     <div class='book-list-title'>
     <h1>Book List</h1>
     </div>
+    <!-- <div class="category-list">
+      {% for category in category_list %}
+                  <button class ='handle-book-btn'>
+                    <a href="{% url 'book:bookOfCategory' category.category_id %}">{{ category.name }}</a>  
+                  </button>
+      {% endfor %} -->
+    </div>
     <div>
       <table id='book-list-table'>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Chi tiet</th>
-            <th>Actions</th>
+            <th></th>
+            
+            {% if request.user.is_superuser %}
+            <th></th>
+          
+            {% endif %}
           </tr>
         </thead>
         <tbody>
@@ -20,13 +31,13 @@
               <td>{{ category.name }}</td>
                <td>
                 <button class ='handle-book-btn'>
-                  <a href="{% url 'book:bookOfCategory' category.category_id %}">Detail</a>  
+                  <a href="{% url 'book:bookOfCategory' category.category_id %}">SHOW</a>  
                 </button>
               </td> 
               {% if request.user.is_superuser %}
                  <td>
                   <button class ='handle-book-btn '>
-                    <a href="{% url 'book:category_delete' category.category_id  %}">Delete</a>  
+                    <a href="{% url 'book:category_delete' category.category_id  %}">DELETE</a>  
                   </button>
                    
                 </td> 

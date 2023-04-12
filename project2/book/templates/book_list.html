@@ -3,17 +3,14 @@
   <div class="book-list-title">
     <h1>Book List</h1>
   </div>
-  <div class="margin-bottom-20">
-    {% if request.user.is_superuser %}
-    <button class="handle-book-btn create-book-btn">
-      <a href="{% url 'book:book_create' %}">Create New Book</a>
-    </button>
-    
-    {% endif %}
-    <button class="handle-book-btn create-book-btn">
-      <a href="/book/category/">Category</a>
-    </button>
-  </div>
+  
+  <!-- <div class="category-list">
+    {% for category in category_list %}
+                <button class ='handle-book-btn'>
+                  <a href="{% url 'book:bookOfCategory' category.category_id %}">{{ category.name }}</a>  
+                </button>
+          {% endfor %}
+  </div> -->
   <div>
     <div class="wrapper">
       {% for book in books %}
